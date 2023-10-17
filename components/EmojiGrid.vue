@@ -1,14 +1,17 @@
 <template>
   <div class="flex justify-center">
-    <div class="grid grid-cols-4 gap-2 h-[50vh] overflow-y-scroll">
+    <div class="w-[50vh]">
+    <p class="text-white text-center" v-if="filteredEmojis.length === 0">C'est un peu vide ici 🍃</p>
+    <div v-if="filteredEmojis.length > 0" class="grid grid-cols-4 gap-2 h-[50vh] overflow-y-scroll">
       <EmojiItem
         v-for="(emoji, index) in filteredEmojis"
         :key="index"
         :icon="emoji.emoji"
         :tags="emoji.tags"
-        @click="$emit('select'"
+        @click="$emit('select', emoji)"
       />
     </div>
+  </div>
   </div>
 </template>
 
